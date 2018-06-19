@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 #{title}: #{question_set.name}
+    each question in question_set.questions
+        p #[strong #{question.question_name}]: #{question.description}
+    else
+        p There are no questions in this question set.

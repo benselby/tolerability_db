@@ -1,0 +1,11 @@
+console.log('Trying to create a session here!');
+
+var list = document.querySelector('select');
+console.log('script got:' + list);
+console.log('Options: ' + list.options);
+
+list.addEventListener('change', function() {
+    console.log('user selected ' + list.options[list.selectedIndex].text);        
+    console.log(Object.keys(list.options[list.selectedIndex].value));
+});
+

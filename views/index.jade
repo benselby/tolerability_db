@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #[em N3 TMS Tolerabililty], hosting online questionaires. 
+
+  h1 Dynamic content
+
+  if error
+    p Error getting dynamic content.
+  else
+    p The database has the following record counts:
+
+    ul
+        li #[strong Sessions:] !{data.session_count}
+        li #[strong Studies:] !{data.study_count}

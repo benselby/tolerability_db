@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+
+    ul
+    each study in study_list
+        li
+            a(href=study.url) #{study.name}
+            |   (#{study.pi_name})
+    else
+        li There are no studies.

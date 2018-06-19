@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    h1=title
+
+    form(method='POST' action='')
+        div.form-group
+            label(for='participant') Participant ID:
+            input#participant.form-control(type='text' placeholder='Name or ID of participant' name='participant' required=true value=(undefined===session ? '' : session.participant) )
+        div.form-group
+            label(for='study') Select a study:
+            //input#study.form-control(type='text' placeholder='Study name' name='study' required=true value=(undefined===session ? '' : session.study) )
+            ul
+            select#study_select.form-control(type='select', placeholder='-- Select study --' name='study_select' required='true')
+                option(value='0') -- Select study --
+                for study in study_list
+                    - var str = JSON.stringify(study)
+                    option(value=str) #{study.name} 
+        div.form-group
+            label(for='date') Date of session:
+            input#date.form-control(type='date' name='date' value=(undefined===session ? '' : session.date) )
+
+        div.form-group
+            #questions
+            
+        button.btn.btn-primary(type='submit') Submit
+
+        // Update the question set based on the selected study:
+        script(src='/javascripts/session_create.js', type='text/javascript')
+
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
+
